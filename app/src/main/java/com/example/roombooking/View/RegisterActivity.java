@@ -7,11 +7,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.roombooking.ApiClient;
 import com.example.roombooking.Model.User;
 import com.example.roombooking.R;
 import com.example.roombooking.Service.UserService;
+import com.google.gson.JsonObject;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -71,6 +76,12 @@ public class RegisterActivity extends AppCompatActivity {
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
+                int code = response.code();
+
+                if (response.isSuccessful()){
+                    Toast.makeText(RegisterActivity.this, response.code() + ": register success", Toast.LENGTH_SHORT).show();
+
+                }
 
             }
 

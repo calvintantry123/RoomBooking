@@ -6,15 +6,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.webkit.URLUtil;
 
-import com.example.roombooking.Adapter.PostAdapter;
 import com.example.roombooking.Adapter.UserAdapter;
 import com.example.roombooking.ApiClient;
-import com.example.roombooking.Model.Post;
 import com.example.roombooking.Model.User;
 import com.example.roombooking.R;
-import com.example.roombooking.Service.PostService;
 import com.example.roombooking.Service.UserService;
 
 import java.util.List;
@@ -29,9 +25,6 @@ public class ManageUserActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     UserAdapter userAdapter;
     UserService userService;
-
-    PostAdapter postAdapter;
-    PostService postService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -3,16 +3,7 @@ package com.example.roombooking.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class User {
-    @SerializedName("id")
-    @Expose
-    private int id;
-    @SerializedName("name")
-    @Expose
-    private String name;
-    @SerializedName("phoneNumber")
-    @Expose
-    private String phoneNumber;
+public class LoginResponse {
     @SerializedName("password")
     @Expose
     private String password;
@@ -23,36 +14,10 @@ public class User {
     @Expose
     private String role;
 
-    public User(String name, String phoneNumber, String password, String email, String role) {
-        this.name = name;
-        this.phoneNumber = phoneNumber;
+    public LoginResponse(String password, String email, String role) {
         this.password = password;
         this.email = email;
         this.role = role;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 
     public String getPassword() {

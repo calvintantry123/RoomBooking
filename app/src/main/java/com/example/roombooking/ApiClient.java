@@ -4,7 +4,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
-    private static String BASE_URL = "http://my-json-server.typicode.com/calvintantry123/fakeData/";
+    private static String BASE_URL = "https://my-json-server.typicode.com/calvintantry123/fakeData/";
     private static Retrofit retrofit;
 
     public static Retrofit getRetrofit(){

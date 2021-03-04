@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.webkit.URLUtil;
 
 import com.example.roombooking.Adapter.PostAdapter;
@@ -68,15 +69,18 @@ public class ManageUserActivity extends AppCompatActivity {
 
         Call<List<User>> call = userService.getAllUser();
 
+//        Log.d("callbackMsg", "go to callback");
         call.enqueue(new Callback<List<User>>() {
             @Override
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+//                Log.d("debugMsg", "onResponse: onresponse");
                 List<User> userList = response.body();
                 userAdapter.setUserList(userList);
             }
 
             @Override
             public void onFailure(Call<List<User>> call, Throwable t) {
+                Log.d("failMsg", t.getLocalizedMessage());
 
             }
         });

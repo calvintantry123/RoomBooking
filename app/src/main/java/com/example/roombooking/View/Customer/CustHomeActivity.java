@@ -24,7 +24,8 @@ public class CustHomeActivity extends AppCompatActivity {
         bookCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent bookIntent;
+                Intent bookIntent = new Intent(CustHomeActivity.this, BookActivity.class);
+                startActivity(bookIntent);
             }
         });
 

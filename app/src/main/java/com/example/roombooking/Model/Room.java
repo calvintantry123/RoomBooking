@@ -20,6 +20,12 @@ public class Room {
     @Expose
     private String type;
 
+    public Room(String name, int capacity, String type) {
+        this.name = name;
+        this.capacity = capacity;
+        this.type = type;
+    }
+
     public int getId() {
         return id;
     }

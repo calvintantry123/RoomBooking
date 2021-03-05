@@ -30,12 +30,13 @@ public class BookActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book);
 
+        int userId = getIntent().getIntExtra("userId", 0);
+        String userRole = getIntent().getStringExtra("userRole");
+
         recyclerView = findViewById(R.id.room_rv);
         recyclerView.setLayoutManager(new LinearLayoutManager(BookActivity.this));
-        roomAdapter = new RoomAdapter(BookActivity.this);
+        roomAdapter = new RoomAdapter(BookActivity.this, userId, userRole);
         recyclerView.setAdapter(roomAdapter);
-
-        int userId = getIntent().getIntExtra("userId", 0);
 
         Retrofit retrofit = ApiClient.getRetrofit();
         roomService = retrofit.create(RoomService.class);

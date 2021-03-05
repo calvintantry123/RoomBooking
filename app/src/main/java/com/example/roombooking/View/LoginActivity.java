@@ -120,6 +120,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             Intent intent = new Intent(LoginActivity.this, CustHomeActivity.class);
                             intent.putExtra("userId", userList.get(i).getId());
+                            intent.putExtra("userRole", userList.get(i).getRole());
                             startActivity(intent);
                         }
                     }
@@ -164,8 +165,9 @@ public class LoginActivity extends AppCompatActivity {
                         if (userList.get(i).getEmail().equals(loggedEmail)){
                             Toast.makeText(LoginActivity.this, response.code() + ": Login success", Toast.LENGTH_SHORT).show();
 
-                            Intent intent = new Intent(LoginActivity.this, CustHomeActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, AdminHomeActivity.class);
                             intent.putExtra("userId", userList.get(i).getId());
+                            intent.putExtra("userRole", userList.get(i).getRole());
                             startActivity(intent);
                         }
                     }

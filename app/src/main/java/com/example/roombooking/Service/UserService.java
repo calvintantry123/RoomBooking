@@ -7,6 +7,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
@@ -25,6 +26,9 @@ public interface UserService {
 
     @PATCH("User/{id}")
     Call<User> updateUser(@Path("id") int id, @Body User user);
+
+    @DELETE("User/{id}")
+    Call<Void> deleteUser(@Path("id") int id);
 
 //    @POST("")
 }

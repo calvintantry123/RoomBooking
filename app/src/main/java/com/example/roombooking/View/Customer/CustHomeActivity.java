@@ -24,12 +24,14 @@ public class CustHomeActivity extends AppCompatActivity {
 
         Intent intentId = getIntent();
         int id = intentId.getIntExtra("userId", 0);
+        String role = getIntent().getStringExtra("userRole");
 
         bookCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent bookIntent = new Intent(CustHomeActivity.this, BookActivity.class);
-                intentId.putExtra("userId", id);
+                bookIntent.putExtra("userId", id);
+                bookIntent.putExtra("userRole", role);
 
                 startActivity(bookIntent);
             }
@@ -40,6 +42,7 @@ public class CustHomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent editIntent = new Intent(CustHomeActivity.this, EditActivity.class);
                 editIntent.putExtra("userId", id);
+                editIntent.putExtra("userRole", role);
 
                 startActivity(editIntent);
 
@@ -51,6 +54,7 @@ public class CustHomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent bookedIntent = new Intent(CustHomeActivity.this, BookedRoomActivity.class);
                 bookedIntent.putExtra("userId", id);
+                bookedIntent.putExtra("userRole", role);
 
                 startActivity(bookedIntent);
             }

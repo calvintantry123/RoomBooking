@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RoomBooking">
-        <activity android:name=".View.Customer.BookedRoomActivity"></activity>
+        <activity android:name=".View.Admin.ManageRoomActivity"></activity>
+        <activity android:name=".View.Admin.EditRoomActivity" />
+        <activity android:name=".View.Admin.CreateRoomActivity" />
+        <activity android:name=".View.Customer.BookedRoomActivity" />
         <activity android:name=".View.Customer.RoomDetailActivity" />
         <activity android:name=".View.Customer.EditActivity" />
         <activity android:name=".View.Customer.BookActivity" />

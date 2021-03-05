@@ -34,6 +34,8 @@ public class RoomDetailActivity extends AppCompatActivity implements AdapterView
     Button bookBtn;
     String start, end;
     BookService bookService;
+    int userId;
+    String userRole;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -60,11 +62,12 @@ public class RoomDetailActivity extends AppCompatActivity implements AdapterView
 
         Intent fromList = getIntent();
         int roomId = fromList.getIntExtra("room_id", 0);
+        userId = getIntent().getIntExtra("userId", 0);
+        userRole = getIntent().getStringExtra("userRole");
+
         Retrofit retrofit = ApiClient.getRetrofit();
         roomService = retrofit.create(RoomService.class);
         Call<Room> detailCall = roomService.viewRoomDetail(roomId);
-
-        bookService = retrofit.create(BookService.class);
 
         detailCall.enqueue(new Callback<Room>() {
             @Override
@@ -82,6 +85,8 @@ public class RoomDetailActivity extends AppCompatActivity implements AdapterView
 
             }
         });
+
+        bookService = retrofit.create(BookService.class);
 
         bookBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.roombooking.Model.Room;
 import com.example.roombooking.R;
+import com.example.roombooking.View.Admin.EditRoomActivity;
+import com.example.roombooking.View.Admin.ManageRoomActivity;
 import com.example.roombooking.View.Customer.RoomDetailActivity;
 
 import java.util.ArrayList;
@@ -20,10 +22,14 @@ import java.util.List;
 public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.ViewHolder> {
     Context context;
     List<Room> roomList;
+    String userRole;
+    int userId;
 
-    public RoomAdapter(Context context) {
+    public RoomAdapter(Context context, int userId, String userRole) {
         this.context = context;
         this.roomList = new ArrayList<>();
+        this.userId = userId;
+        this.userRole = userRole;
     }
 
     public void setRoomList(List<Room> roomList) {
@@ -55,6 +61,7 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView capacity, name, type;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -69,9 +76,21 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.ViewHolder> {
         public void onClick(View v) {
 //            Intent
             int position = getAdapterPosition();
-            Intent intent = new Intent(context, RoomDetailActivity.class);
-            intent.putExtra("room_id", roomList.get(position).getId());
-            context.startActivity(intent);
+
+            if (userRole.equalsIgnoreCase("admin")){
+                Intent adminIntent = new Intent(context, ManageRoomActivity.class);
+                adminIntent.putExtra("room_id", roomList.get(position).getId());
+                adminIntent.putExtra("userId", userId);
+                adminIntent.putExtra("userRole", userRole);
+                context.startActivity(adminIntent);
+            }
+            else if (userRole.equalsIgnoreCase("user")){
+                Intent intent = new Intent(context, RoomDetailActivity.class);
+                intent.putExtra("room_id", roomList.get(position).getId());
+                intent.putExtra("userId", userId);
+                intent.putExtra("userRole", userRole);
+                context.startActivity(intent);
+            }
         }
     }
 }

@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RoomBooking">
-        <activity android:name=".View.Customer.EditActivity"></activity>
+        <activity android:name=".View.Customer.RoomDetailActivity"></activity>
+        <activity android:name=".View.Customer.EditActivity" />
         <activity android:name=".View.Customer.BookActivity" />
         <activity android:name=".View.Admin.ManageUserActivity" />
         <activity android:name=".View.Customer.CustHomeActivity" />

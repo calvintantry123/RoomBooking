@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.roombooking.Model.Room;
 import com.example.roombooking.R;
+import com.example.roombooking.View.Customer.RoomDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +42,7 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Room room = roomList.get(position);
 
-        holder.capacity.setText(room.getCapacity());
+        holder.capacity.setText(String.valueOf(room.getCapacity()));
     }
 
     @Override
@@ -61,6 +62,10 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.ViewHolder> {
         @Override
         public void onClick(View v) {
 //            Intent
+            int position = getAdapterPosition();
+            Intent intent = new Intent(context, RoomDetailActivity.class);
+            intent.putExtra("room_id", roomList.get(position).getId());
+            context.startActivity(intent);
         }
     }
 }

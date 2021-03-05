@@ -43,6 +43,9 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.ViewHolder> {
         Room room = roomList.get(position);
 
         holder.capacity.setText(String.valueOf(room.getCapacity()));
+        holder.name.setText(String.valueOf(room.getName()));
+        holder.type.setText(String.valueOf(room.getType()));
+
     }
 
     @Override
@@ -51,11 +54,14 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        TextView capacity;
+        TextView capacity, name, type;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             capacity = itemView.findViewById(R.id.capacityTxt);
+            name = itemView.findViewById(R.id.nameTxt);
+            type = itemView.findViewById(R.id.typeTxt);
+
             itemView.setOnClickListener(this);
         }
 

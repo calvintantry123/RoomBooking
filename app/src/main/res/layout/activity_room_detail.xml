@@ -8,43 +8,63 @@
     android:orientation="vertical"
     tools:context=".View.Customer.RoomDetailActivity">
 
-    <TextView
-        android:id="@+id/idTxt"
-        android:text="Room Id"
-        android:textColor="@color/white"
-        android:textSize="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/capacityTxt"
-        android:text="Room Capacity"
-        android:textColor="@color/white"
-        android:textSize="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="60dp"
+        android:orientation="vertical"
+        android:layout_width="300dp"
+        android:layout_height="match_parent">
 
-    <Spinner
-        android:layout_marginTop="30dp"
-        android:id="@+id/startSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/box_shape"/>
+        <TextView
+            android:id="@+id/nameTxt"
+            android:text="Room name"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-    <Spinner
-        android:layout_marginTop="30dp"
-        android:id="@+id/endSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/box_shape"/>
+        <TextView
+            android:id="@+id/typeTxt"
+            android:text="Room category"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-    <Button
-        android:layout_marginTop="30dp"
-        android:id="@+id/setBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_shape"
-        android:text="Book Room"/>
+        <TextView
+            android:id="@+id/capacityTxt"
+            android:text="Room Capacity"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Spinner
+            android:layout_marginTop="30dp"
+            android:id="@+id/startSpinner"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@drawable/box_shape"/>
+
+        <Spinner
+            android:layout_marginTop="30dp"
+            android:id="@+id/endSpinner"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@drawable/box_shape"/>
+
+        <Button
+            android:layout_marginTop="30dp"
+            android:id="@+id/bookBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_shape"
+            android:text="Book Room"/>
+
+    </LinearLayout>
 
 <!--    <EditText-->
 <!--        android:id="@+id/startTxt"-->

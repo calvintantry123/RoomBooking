@@ -35,6 +35,8 @@ public class BookActivity extends AppCompatActivity {
         roomAdapter = new RoomAdapter(BookActivity.this);
         recyclerView.setAdapter(roomAdapter);
 
+        int userId = getIntent().getIntExtra("userId", 0);
+
         Retrofit retrofit = ApiClient.getRetrofit();
         roomService = retrofit.create(RoomService.class);
 

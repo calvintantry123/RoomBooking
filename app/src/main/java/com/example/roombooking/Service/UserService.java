@@ -14,16 +14,16 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface UserService {
-    @GET("users")
+    @GET("User")
     Call<List<User>> getAllUser();
 
-    @POST("users")
+    @POST("User")
     Call<User> registerUser(@Body User user);
 
-    @POST("users")
+    @POST("User")
     Call<LoginResponse> loginUser(@Body LoginResponse loginResponse);
 
-    @PATCH("users/{id}")
+    @PATCH("User/{id}")
     Call<User> updateUser(@Path("id") int id, @Body User user);
 
 //    @POST("")

@@ -10,12 +10,22 @@ public class Booking {
     @SerializedName("roomId")
     @Expose
     private Integer roomId;
+
+    @SerializedName("userId")
+    @Expose
+    private Integer userId;
     @SerializedName("startTime")
     @Expose
-    private Integer startTime;
+    private String startTime;
     @SerializedName("endTime")
     @Expose
-    private Integer endTime;
+    private String endTime;
+
+    public Booking(Integer roomId, String startTime, String endTime) {
+        this.roomId = roomId;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
 
     public Integer getId() {
         return id;
@@ -33,19 +43,19 @@ public class Booking {
         this.roomId = roomId;
     }
 
-    public Integer getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Integer startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public Integer getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Integer endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 }

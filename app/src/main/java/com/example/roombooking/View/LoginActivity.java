@@ -19,6 +19,8 @@ import com.example.roombooking.Service.UserService;
 import com.example.roombooking.View.Admin.AdminHomeActivity;
 import com.example.roombooking.View.Customer.CustHomeActivity;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -30,6 +32,9 @@ public class LoginActivity extends AppCompatActivity {
     EditText emailTxt, pwsTxt;
     Button loginBtn, registerBtn;
     UserService userService;
+
+    User user;
+    List<User> userList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +56,19 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        Call<List<User>> getCall = userService.getAllUser();
+        getCall.enqueue(new Callback<List<User>>() {
+            @Override
+            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+                userList = response.body();
+            }
+
+            @Override
+            public void onFailure(Call<List<User>> call, Throwable t) {
+
             }
         });
 
@@ -94,9 +112,21 @@ public class LoginActivity extends AppCompatActivity {
 //                LoginResponse logresp = response.body();
 
                 if (response.isSuccessful()){
-                    Toast.makeText(LoginActivity.this, response.code() + ": Login success", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(LoginActivity.this, CustHomeActivity.class);
-                startActivity(intent);
+                    String loggedEmail = response.body().getEmail();
+                    int size = userList.size();
+                    for(int i = 0; i < userList.size(); i++){
+                        if (userList.get(i).getEmail().equals(loggedEmail)){
+                            Toast.makeText(LoginActivity.this, response.code() + ": Login success", Toast.LENGTH_SHORT).show();
+
+                            Intent intent = new Intent(LoginActivity.this, CustHomeActivity.class);
+                            intent.putExtra("userId", userList.get(i).getId());
+                            startActivity(intent);
+                        }
+                    }
+
+//                    Intent intent = new Intent(LoginActivity.this, CustHomeActivity.class);
+//                    intent.putExtra("customerEmail", response.body().getEmail());
+//                    startActivity(intent);
                 }
                 else{
                     Toast.makeText(LoginActivity.this, response.code() + ": login failed", Toast.LENGTH_SHORT).show();
@@ -127,9 +157,22 @@ public class LoginActivity extends AppCompatActivity {
 //                LoginResponse logresp = response.body();
 
                 if (response.isSuccessful()){
-                    Toast.makeText(LoginActivity.this, response.code() + ": Login success", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(LoginActivity.this, AdminHomeActivity.class);
-                    startActivity(intent);
+
+                    String loggedEmail = response.body().getEmail();
+                    int size = userList.size();
+                    for(int i = 0; i < userList.size(); i++){
+                        if (userList.get(i).getEmail().equals(loggedEmail)){
+                            Toast.makeText(LoginActivity.this, response.code() + ": Login success", Toast.LENGTH_SHORT).show();
+
+                            Intent intent = new Intent(LoginActivity.this, CustHomeActivity.class);
+                            intent.putExtra("userId", userList.get(i).getId());
+                            startActivity(intent);
+                        }
+                    }
+
+//                    Toast.makeText(LoginActivity.this, response.code() + ": Login success", Toast.LENGTH_SHORT).show();
+//                    Intent intent = new Intent(LoginActivity.this, AdminHomeActivity.class);
+//                    startActivity(intent);
                 }
                 else{
                     Toast.makeText(LoginActivity.this, response.code() + ": login failed", Toast.LENGTH_SHORT).show();

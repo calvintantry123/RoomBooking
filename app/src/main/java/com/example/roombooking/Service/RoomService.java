@@ -9,9 +9,9 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 public interface RoomService {
-    @GET("room")
+    @GET("Room")
     Call<List<Room>> viewRoom();
 
-    @GET("room/{id}")
+    @GET("Room/{id}")
     Call<Room> viewRoomDetail(@Path("id") int id);
 }
